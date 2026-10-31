@@ -10,8 +10,9 @@
 
 
 # 1. Process / clean
+# 1. Process / clean
 source("scripts/data/process/process_data.R")
-
+source("scripts/data/process/add_age_group.R")
 # 2. Explore
 source("scripts/data/explore/explore_data.R")
 
@@ -20,3 +21,14 @@ source("scripts/analysis/analysis.R")
 
 
 message("Pipeline complete. See scripts/analysis/output/ for results.")
+
+dir.create("data/processed")
+
+cat(readLines("scripts/data/process/process_data.R"), sep = "\n")
+cat("\n-----\n")
+cat(readLines("scripts/data/explore/explore_data.R"), sep = "\n")
+
+
+cat(readLines("scripts/data/import/import_data.R"), sep = "\n")
+cat("\n-----\n")
+cat(readLines("scripts/analysis/analysis.R"), sep = "\n")
